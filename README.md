@@ -68,7 +68,7 @@ Find the minimum total free energy given a sequence of amino acid. Free energy i
 
 <img src="https://user-images.githubusercontent.com/58515206/84499172-39291e00-acdc-11ea-863f-afa4e4d5fdf0.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84499172-39291e00-acdc-11ea-863f-afa4e4d5fdf0.PNG" width="300" height="300" />
 
-If **collision** and **trap** occur, agent should pick another action to **move to other direction**. But there are also a conditions where the agent couldnt move to other direction since all space has occupied. If these occur, I called it as **multiple trap** then **episode terminate** (Done = True).
+* If **collision** and **trap** occur, agent should pick another action to **move to other direction**. But there are also a conditions where the agent couldnt move to other direction since all space has occupied. If these occur, I called it as **multiple trap** then **episode terminate** (Done = True).
 
 **Example** :
 
