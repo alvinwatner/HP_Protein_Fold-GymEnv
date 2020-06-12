@@ -115,7 +115,7 @@ env.render(plot = True) #show result figure only
 Author  : Alvin Watner
 Email   : alvin2phantomhive@gmail.com
 Website : -
-License : -
+License : MIT
 ----------------------------------------
 ```
 
