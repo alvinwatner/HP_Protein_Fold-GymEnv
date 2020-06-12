@@ -1,12 +1,13 @@
 # Protein Folding 2D HP-Model Simulation
 
-Protein plays a big role for every living organismm, it keeps us healthy by performs it functionality such as transporting oxygen, part of imune system, muscle development, etc. These amazing functionality only works if those protein 'fold' into a stable(native)-state where it has a minimum 'free-energy' value. Predicting the minimum 'free-energy', helps bioinformatics, biotechnology in terms of developing a novel drug, vaccine, and many more. This project helps to simulate the folding process in 2D HP-model which is also well known as NP-complete problem.
+Protein plays a big role for every living organism, it keeps us healthy by performs it functionality such as transporting oxygen, part of imune system, muscle development, etc. These amazing functionality only works if those protein 'fold' into a stable(native)-state where it has a minimum 'free-energy' value. Predicting the minimum 'free-energy', helps bioinformatics, biotechnology in terms of developing a novel drug, vaccine, and many more. This project helps to simulate the folding process in 2D HP-model which is also well known as NP-complete problem.
 
 ## Getting Started
 
-If you ever play around any of **OpenAI gym** environment, this project follows the **OpenAI gym** funtions behaviour.
+If you ever play around any of **OpenAI gym** environment, you should be familiar with the reset(), step(), render() function.  
+Well, this project follows the **OpenAI gym** funtions behaviour too.
 
-Please run the code **create_background.py** inside '**protein_folding\Code**' folder. 
+Before using the environment, Please run the code **create_background.py** inside '**protein_folding\Code**' folder. 
 It will generate an initial background '**.npy**' file for visualization purpose.
 
 ![create_background](https://user-images.githubusercontent.com/58515206/84480578-f60c8200-acbe-11ea-9cc2-ad220a287f38.PNG)
@@ -21,20 +22,10 @@ It will generate an initial background '**.npy**' file for visualization purpose
 ### Installation
 Open Terminal and install the above prerequisites libraries
 
-Numpy
 ```
 pip install numpy
-```
-Matplotlib
-```
 pip install matplotlib
-```
-OpenCv
-```
 pip install opencv-python
-```
-Pillow
-```
 pip install pillow
 ```
 
@@ -52,52 +43,40 @@ Given a sequence of amino **['H', 'P']**, the agent task is to place each amino 
 
 <img src="https://user-images.githubusercontent.com/58515206/84485971-eee97200-acc6-11ea-9d24-e0ed2f09b990.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84485971-eee97200-acc6-11ea-9d24-e0ed2f09b990.PNG" width="150" height="200" /> <img src="https://user-images.githubusercontent.com/58515206/84487608-32dd7680-acc9-11ea-98c1-705e57684f7b.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84488014-cadb6000-acc9-11ea-9a63-22b659dbe3cb.PNG" width="150" height="200" /> <img src="https://user-images.githubusercontent.com/58515206/84488014-cadb6000-acc9-11ea-9a63-22b659dbe3cb.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84487959-b7c89000-acc9-11ea-9a2f-259b96c88e7a.PNG" width="150" height="200" /> <img src="https://user-images.githubusercontent.com/58515206/84488248-1c83ea80-acca-11ea-937e-ad5463365637.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84488248-1c83ea80-acca-11ea-937e-ad5463365637.PNG" width="150" height="200" />
 
-### Break down into end to end tests
+## Goals
 
-Explain what these tests test and why
+Find the minimum total free energy given a sequence of amino acid. Free energy indicated by **H-H pairs** that is **not connected** to the protein primary structure. The value of free energy is **-1** for each pair.
 
-```
-Give an example
-```
+**Example** :
 
-### And coding style tests
 
-Explain what these tests test and why
+     Free Energy = -1           Free Energy = -3             Free Energy = -9         
 
-```
-Give an example
-```
+<img src="https://user-images.githubusercontent.com/58515206/84496947-18f76000-acd8-11ea-8aeb-9c920567a061.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84496947-18f76000-acd8-11ea-8aeb-9c920567a061.PNG" width="200" height="200" /> <img src="https://user-images.githubusercontent.com/58515206/84496527-4b548d80-acd7-11ea-8e60-62f07da85663.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84496527-4b548d80-acd7-11ea-8e60-62f07da85663.PNG" width="200" height="200" /> <img src="https://user-images.githubusercontent.com/58515206/84496565-5c9d9a00-acd7-11ea-951f-6d5e1880b76e.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84496565-5c9d9a00-acd7-11ea-951f-6d5e1880b76e.PNG" width="200" height="200" /> 
 
-## Deployment
+## Punishment
 
-Add additional notes about how to deploy this on a live system
+* Placing amino to occupied space by other amino is not allowed, it considered as **collision** and recieve a **collision punishment -2**
 
-## Built With
+**Example** : 
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+<img src="https://user-images.githubusercontent.com/58515206/84498110-34636a80-acda-11ea-8acd-667fea5b78c4.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84498110-34636a80-acda-11ea-8acd-667fea5b78c4.PNG" width="250" height="250" />
 
-## Contributing
+* If amino has nowhere to go, whereas there are still other amino in the sequence, it considered as **trap condition** and receive a **trap punishment -4**
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+**Example** :
 
-## Versioning
+<img src="https://user-images.githubusercontent.com/58515206/84499172-39291e00-acdc-11ea-863f-afa4e4d5fdf0.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84499172-39291e00-acdc-11ea-863f-afa4e4d5fdf0.PNG" width="300" height="300" />
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+If **collision** and **trap** occur, agent should pick another action to **move to other direction**. But there are also a conditions where the agent couldnt move to other direction since all space has occupied. If these occur, I called it as **multiple trap** then **episode terminate** (Done = True).
 
-## Authors
+**Example** :
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+<img src="https://user-images.githubusercontent.com/58515206/84499910-bd2fd580-acdd-11ea-9f16-c78736fba429.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84499910-bd2fd580-acdd-11ea-9f16-c78736fba429.PNG" width="350" height="350" />
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
+## Reward Function
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Reward is calculated at the end of the episode, which mean its a **sparse reward RL problem**, everysteps has **0** reward except the **terminal state**
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+<img src="https://user-images.githubusercontent.com/58515206/84501249-64ae0780-ace0-11ea-9c48-44ba4a6b623d.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84501249-64ae0780-ace0-11ea-9c48-44ba4a6b623d.PNG" width="750" height="120" />
