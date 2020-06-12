@@ -80,3 +80,26 @@ If **collision** and **trap** occur, agent should pick another action to **move 
 Reward is calculated at the end of the episode, which mean its a **sparse reward RL problem**, everysteps has **0** reward except the **terminal state**
 
 <img src="https://user-images.githubusercontent.com/58515206/84501249-64ae0780-ace0-11ea-9c48-44ba4a6b623d.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84501249-64ae0780-ace0-11ea-9c48-44ba4a6b623d.PNG" width="750" height="120" />
+
+## Try it!
+Note that, env.reset() argument is optional, if amino_input not specified then it will generate random sequences.
+
+* env.render()            :  To Visualize Folding Process (opencv window followed by matplotlib figure)
+* env.render(plot = True) :  To Show Folding Result(Matplotlib Figure) Only
+```python
+from simulation import environment
+import numpy as np
+
+env = environment()
+current_state = env.reset(amino_input = ['P', 'P', 'P', 'H', 'H', 'P', 'P', 'H', 'H', 'P', 'P', 'P', 'P', 'P', 'H', 'H', 'H', 'H', 'H', 'H', 'H', 'P', 'P', 'H', 'H', 'P', 'P', 'P', 'P', 'H', 'H', 'P', 'P', 'H', 'P', 'P'])
+done = False
+
+while not done:
+	action = np.random.randint(0, env.action_space_size)
+	new_state, reward, done = env.step(action)	
+	# env.render()
+env.render(plot = True) #show result figure only
+```
+**Output**
+
+<img src="https://user-images.githubusercontent.com/58515206/84502800-34b43380-ace3-11ea-953b-7bfe476f6c12.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84502800-34b43380-ace3-11ea-953b-7bfe476f6c12.PNG" width="450" height="450" />
