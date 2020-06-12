@@ -107,3 +107,18 @@ env.render(plot = True) #show result figure only
 **Output**
 
 <img src="https://user-images.githubusercontent.com/58515206/84502800-34b43380-ace3-11ea-953b-7bfe476f6c12.PNG" alt="" data-canonical-src="https://user-images.githubusercontent.com/58515206/84502800-34b43380-ace3-11ea-953b-7bfe476f6c12.PNG" width="450" height="450" />
+
+## Authors Info
+**Please feel free to use and modify this, but keep this below information. Thanks!**
+```
+----------------------------------------
+Author  : Alvin Watner
+Email   : alvin2phantomhive@gmail.com
+Website : -
+License : -
+----------------------------------------
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
