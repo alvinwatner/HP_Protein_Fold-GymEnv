@@ -7,8 +7,12 @@ Protein plays a big role for every living organism, it keeps us healthy by perfo
 If you ever play around any of **OpenAI gym** environment, you should be familiar with the reset(), step(), render() function.  
 Well, this project follows the **OpenAI gym** funtions behaviour too.
 
-Before using the environment, Please run the code **create_background.py** inside '**protein_folding\Code**' folder. 
-It will generate an initial background '**.npy**' file for visualization purpose.
+Before using the environment
+```
+git clone https://github.com/alvinwatner/protein_folding.git
+```
+and after done clonning, Please run the code **create_background.py** inside '**protein_folding\Code**' folder. 
+It will generate an initial background '**.npy**' file for visualization purpose, otherwise it will raise an error.
 
 ![create_background](https://user-images.githubusercontent.com/58515206/84480578-f60c8200-acbe-11ea-9cc2-ad220a287f38.PNG)
 
