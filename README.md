@@ -110,12 +110,14 @@ env.render(plot = True) #show result figure only
 
 ## Authors Info
 **Please feel free to use and modify this, but keep this below information. Thanks!**
+```
 ----------------------------------------
 Author  : Alvin Watner
 Email   : alvin2phantomhive@gmail.com
 Website : -
 License : -
------------------------------------------
+----------------------------------------
+```
 
 ## License
 
